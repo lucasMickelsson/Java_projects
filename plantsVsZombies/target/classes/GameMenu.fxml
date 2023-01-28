@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ax.ha.it.oo2.game.plantsvszombies.GamePlayController"
+            prefHeight="400.0" prefWidth="600.0" fx:id="pauseMenu">
+
+    <ImageView fx:id="gameMenu" fitHeight="300" fitWidth="500" layoutX="312.0" layoutY="100.0">
+        <image>
+            <Image url="/GameMenu.png"/>
+        </image>
+    </ImageView>
+
+    <ImageView fitHeight="100" fitWidth="150" layoutX="490.0" layoutY="150.0"
+               onMouseClicked="#resumeAnimations">
+        <image>
+            <Image url="/resume.png"/>
+        </image>
+    </ImageView>
+
+    <ImageView fitHeight="80" fitWidth="150" layoutX="490.0" layoutY="230.0" onMouseClicked="#restartGame">
+        <image>
+            <Image url="/restartGame.png"/>
+        </image>
+    </ImageView>
+
+    <ImageView fitHeight="80" fitWidth="150" layoutX="490.0" layoutY="300.0" onMouseClicked="#mainMenu">
+        <image>
+            <Image url="/returnTomainMenu.png"/>
+        </image>
+    </ImageView>
+
+</AnchorPane>
