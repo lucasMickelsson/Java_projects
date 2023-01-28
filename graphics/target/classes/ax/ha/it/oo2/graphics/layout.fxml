@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import ax.ha.it.oo2.graphics.DrawingPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/11.0.1"
+      fx:controller="ax.ha.it.oo2.graphics.DrawingController">
+    <children>
+        <HBox spacing="10.0" minWidth="150">
+            <children>
+                <Label>Press a button to begin:</Label>
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#drawPolyline"
+                        text="Polyline"/>
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#drawRectangle"
+                        text="Rect"/>
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#drawCircle" text="Circle"/>
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clear" text="Clear"/>
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#undo" text="Undo"/>
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#redo" text="Redo"/>
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setFreeHandDrawingScene"
+                        text="FreeHandDrawing"/>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="5.0" right="5.0" top="10.0"/>
+            </padding>
+        </HBox>
+        <AnchorPane prefWidth="600" prefHeight="400" maxWidth="Infinity" maxHeight="Infinity" HBox.hgrow="ALWAYS"
+                    VBox.vgrow="ALWAYS">
+            <DrawingPane fx:id="drawingPane" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="5.0"
+                         AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0"/>
+        </AnchorPane>
+    </children>
+</VBox>
