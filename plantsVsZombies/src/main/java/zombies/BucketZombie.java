@@ -1,4 +1,4 @@
-package ax.ha.it.oo2.game.plantsvszombies;
+package zombies;
 
 public class BucketZombie extends Zombie {
     public BucketZombie(int x, int y) {

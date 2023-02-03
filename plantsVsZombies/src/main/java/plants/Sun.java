@@ -1,5 +1,7 @@
-package ax.ha.it.oo2.game.plantsvszombies;
+package plants;
 
+import ax.ha.it.oo2.game.plantsvszombies.GameElements;
+import ax.ha.it.oo2.game.plantsvszombies.GamePlayController;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

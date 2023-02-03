@@ -1,5 +1,8 @@
-package ax.ha.it.oo2.game.plantsvszombies;
+package zombies;
 
+import ax.ha.it.oo2.game.plantsvszombies.GameElements;
+import ax.ha.it.oo2.game.plantsvszombies.GamePlayController;
+import plants.Plant;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -81,8 +84,8 @@ public abstract class Zombie extends GameElements {
                 if (plant.getHp() <= 0) {
                     plant.setHp(0);
                     GamePlayController.allPlants.remove(plant);
-                    plant.imageView.setDisable(true);
-                    plant.imageView.setVisible(false);
+                    plant.getImageView().setDisable(true);
+                    plant.getImageView().setVisible(false);
                     this.speed = 1;
                     reachedPlant = false;
                 }

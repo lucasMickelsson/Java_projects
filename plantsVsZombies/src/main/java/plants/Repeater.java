@@ -1,16 +1,18 @@
-package ax.ha.it.oo2.game.plantsvszombies;
+package plants;
 
+import ax.ha.it.oo2.game.plantsvszombies.GamePlayController;
+import zombies.Zombie;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
-public class PeaShooter extends Plant {
+public class Repeater extends Plant {
     private Timeline timeline;
 
-    public PeaShooter(int x, int y, int row, int col) {
-        super(x, y, 100, "/peashooter.gif", row, col, 60, 60);
+    public Repeater(int x, int y, int row, int col) {
+        super(x, y, 150, "/repeater.gif", row, col, 60, 60);
     }
 
     public void attack(Pane pane) {
@@ -18,13 +20,15 @@ public class PeaShooter extends Plant {
             for (int i = 0; i < GamePlayController.spawnedZombies.size(); i++) {
                 Zombie zombie = GamePlayController.spawnedZombies.get(i);
                 if (this.getY() == zombie.getY() + 55 && this.getX() <= zombie.getX() && zombie.getHp() > 0) {
-                    Bullet bullet = new Bullet(getXCoordinate(col), getYCoordinate(row));
-                    bullet.makeImage(pane);
-                    bullet.shoot();
+                    Bullet bullet1 = new Bullet(getXCoordinate(col) + 30, getYCoordinate(row));
+                    Bullet bullet2 = new Bullet(getXCoordinate(col), getYCoordinate(row));
+                    bullet1.makeImage(pane);
+                    bullet2.makeImage(pane);
+                    bullet1.shoot();
+                    bullet2.shoot();
                     checkHp();
                 }
             }
-
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();

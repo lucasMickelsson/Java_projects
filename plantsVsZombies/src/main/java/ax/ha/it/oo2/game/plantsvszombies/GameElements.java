@@ -46,4 +46,8 @@ public abstract class GameElements {
         this.y = y;
         imageView.setY(y);
     }
+
+    public ImageView getImageView() {
+        return imageView;
+    }
 }

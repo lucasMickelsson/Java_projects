@@ -1,5 +1,10 @@
 package ax.ha.it.oo2.game.plantsvszombies;
 
+import zombies.BucketZombie;
+import zombies.ConeZombie;
+import zombies.NormalZombie;
+import zombies.Zombie;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;

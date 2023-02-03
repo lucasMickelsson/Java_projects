@@ -1,5 +1,6 @@
-package ax.ha.it.oo2.game.plantsvszombies;
+package plants;
 
+import ax.ha.it.oo2.game.plantsvszombies.GamePlayController;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -24,9 +25,9 @@ public class Sunflower extends Plant {
             Sun sun = new Sun(x, y);
             //sun.move();
             sun.makeImage(pane);
-            sun.imageView.setOnMouseClicked(mouseEvent -> {
-                sun.imageView.setVisible(false);
-                sun.imageView.setDisable(true);
+            sun.getImageView().setOnMouseClicked(mouseEvent -> {
+                sun.getImageView().setVisible(false);
+                sun.getImageView().setDisable(true);
                 GamePlayController.sunCount += 25;
             });
 

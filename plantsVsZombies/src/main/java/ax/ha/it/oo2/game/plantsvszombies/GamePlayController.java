@@ -15,6 +15,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
+import plants.Plant;
+import plants.Sun;
+import zombies.Zombie;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,9 +66,9 @@ public class GamePlayController {
         }
     }
 
-    public boolean checkOccupiedPosition(int row, int col) {
+    private boolean checkOccupiedPosition(int row, int col) {
         for (Plant plant : allPlants) {
-            if (plant.row == row && plant.col == col) {
+            if (plant.getRow() == row && plant.getCol() == col) {
                 return true;
             }
         }
@@ -102,7 +105,7 @@ public class GamePlayController {
         }
     }
 
-    public void createLawnMower() {
+    private void createLawnMower() {
         int y = 100;
         for (int i = 0; i < 5; i++) {
             LawnMower lawnMower = new LawnMower(260, y);
@@ -112,7 +115,7 @@ public class GamePlayController {
         }
     }
 
-    public void sunSpawner() {
+    private void sunSpawner() {
         Random random = new Random();
         Timeline suns = new Timeline(new KeyFrame(Duration.seconds(10), actionEvent -> {
             int x = random.nextInt(300, 900);
@@ -130,7 +133,7 @@ public class GamePlayController {
         allAnimations.add(suns);
     }
 
-    public void startZombieSpawner(int time) {
+    private void startZombieSpawner(int time) {
         //Zombie animations
         zombiespawner = new Timeline(new KeyFrame(Duration.seconds(time), actionEvent -> {
             try {
@@ -148,7 +151,7 @@ public class GamePlayController {
         allAnimations.add(zombiespawner);
     }
 
-    public void stopAnimations() {
+    private void stopAnimations() {
         for (Timeline timeline : allAnimations) {
             timeline.stop();
         }
@@ -163,13 +166,13 @@ public class GamePlayController {
         menuIsUp = false;
     }
 
-    public void updateLabels() {
+    private void updateLabels() {
         sunCountLabel.setText(String.valueOf(sunCount));
         zombieCounter.setText(String.valueOf(killedZombies));
         levelNumber.setText("Level: " + level.getLevelNumber());
     }
 
-    public void gameProgress() {
+    private void gameProgress() {
         Timeline gameProgressCheck = new Timeline(new KeyFrame(Duration.millis(5), actionEvent -> {
             updateLabels();
             if (!gameStatus) {
@@ -233,7 +236,7 @@ public class GamePlayController {
         }
     }
 
-    public void gameWin() {
+    private void gameWin() {
         stopAnimations();
         ImageView imageView = new ImageView(new Image("Win.png", 564, 470, false, false));
         imageView.setX(232);
@@ -241,7 +244,7 @@ public class GamePlayController {
         createQuitButton(imageView);
     }
 
-    public void gameLost() {
+    private void gameLost() {
         stopAnimations();
         ImageView imageView = new ImageView(new Image("ZombiesAteYourBrains.png"));
         imageView.setX(232);
@@ -249,7 +252,7 @@ public class GamePlayController {
         createQuitButton(imageView);
     }
 
-    public void createQuitButton(ImageView imageView) {
+    private void createQuitButton(ImageView imageView) {
         ImageView quitGame = new ImageView(new Image("returnTomainMenu.png", 150, 80, false, false));
         quitGame.setLayoutX(400);
         quitGame.setLayoutY(450);

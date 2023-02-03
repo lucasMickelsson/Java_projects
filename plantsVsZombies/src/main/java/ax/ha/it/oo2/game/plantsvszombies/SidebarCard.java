@@ -1,5 +1,6 @@
 package ax.ha.it.oo2.game.plantsvszombies;
 
+import plants.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;

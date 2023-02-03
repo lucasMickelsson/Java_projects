@@ -1,4 +1,4 @@
-package ax.ha.it.oo2.game.plantsvszombies;
+package plants;
 
 public class Wallnut extends Plant {
     public Wallnut(int x, int y, int row, int col) {

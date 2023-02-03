@@ -1,5 +1,7 @@
-package ax.ha.it.oo2.game.plantsvszombies;
+package plants;
 
+import ax.ha.it.oo2.game.plantsvszombies.GameElements;
+import ax.ha.it.oo2.game.plantsvszombies.GamePlayController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -21,8 +23,15 @@ public abstract class Plant extends GameElements {
         return hp;
     }
 
+    public int getRow() {
+        return row;
+    }
 
-    void makeImage(GridPane gridPane) {
+    public int getCol() {
+        return col;
+    }
+
+    public void makeImage(GridPane gridPane) {
         imageView = new ImageView();
         Image image = new Image(path, width, height, false, false);
         imageView.setImage(image);

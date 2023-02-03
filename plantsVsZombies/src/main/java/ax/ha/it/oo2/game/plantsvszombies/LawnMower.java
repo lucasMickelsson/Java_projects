@@ -5,6 +5,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
+import zombies.Zombie;
 
 public class LawnMower extends GameElements {
     private Timeline zombieCheck;
@@ -25,10 +26,10 @@ public class LawnMower extends GameElements {
                         activate();
                         zombie.setHp(0);
                         activated = true;
-                        zombie.animation.stop();
+                        zombie.getAnimation().stop();
                     } else {
                         zombie.setHp(0);
-                        zombie.animation.stop();
+                        zombie.getAnimation().stop();
                     }
                 }
             }
