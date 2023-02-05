@@ -8,18 +8,18 @@ import javafx.scene.layout.GridPane;
 
 public abstract class Plant extends GameElements {
 
-    protected int hp;
+    protected double hp;
     protected int row;
     protected int col;
 
-    public Plant(int x, int y, int hp, String path, int row, int col, int width, int height) {
+    public Plant(int x, int y, double hp, String path, int row, int col, int width, int height) {
         super(x, y, path, width, height);
         this.row = row;
         this.col = col;
         this.hp = hp;
     }
 
-    public int getHp() {
+    public double getHp() {
         return hp;
     }
 
@@ -64,7 +64,7 @@ public abstract class Plant extends GameElements {
         };
     }
 
-    public void setHp(int hp) {
+    public void setHp(double hp) {
         this.hp = hp;
         if (this.hp <= 0) {
             imageView.setVisible(false);

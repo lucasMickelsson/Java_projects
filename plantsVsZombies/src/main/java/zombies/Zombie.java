@@ -9,25 +9,25 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 
 public abstract class Zombie extends GameElements {
-    protected int hp;
+    protected double hp;
     protected double speed;
-    protected int attackPower;
+    protected double attackPower;
     protected Timeline animation;
     protected boolean isEating = false;
     protected boolean reachedPlant = false;
 
-    public Zombie(int attackPower, double speed, int x, int y, int hp, String path, int width, int height) {
+    public Zombie(double attackPower, double speed, int x, int y, double hp, String path, int width, int height) {
         super(x, y, path, width, height);
         this.attackPower = attackPower;
         this.speed = speed;
         this.hp = hp;
     }
 
-    public int getHp() {
+    public double getHp() {
         return hp;
     }
 
-    public void setHp(int hp) {
+    public void setHp(double hp) {
         this.hp = hp;
         if (this.hp <= 0) {
             //stop all animations

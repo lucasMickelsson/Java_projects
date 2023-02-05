@@ -13,7 +13,7 @@ public class Sunflower extends Plant {
     private Timeline timeline;
 
     public Sunflower(int x, int y, int row, int col) {
-        super(x, y, 100, "/sunflower.gif", row, col, 60, 60);
+        super(x, y, 430, "/sunflower.gif", row, col, 60, 60);
     }
 
     public void produceSun(Pane pane) {

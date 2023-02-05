@@ -12,7 +12,7 @@ public class PeaShooter extends Plant {
     private Timeline timeline;
 
     public PeaShooter(int x, int y, int row, int col) {
-        super(x, y, 100, "/peashooter.gif", row, col, 60, 60);
+        super(x, y, 480, "/peashooter.gif", row, col, 60, 60);
     }
 
     public void attack(Pane pane) {
