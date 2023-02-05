@@ -21,7 +21,7 @@ public abstract class Zombie extends GameElements {
         this.attackPower = attackPower;
         this.speed = speed;
         this.hp = hp;
-    }
+    }//https://github.com/ArkaSarkar19/Plants-vs-Zombies-Game/blob/master/pvzGUI/src/sample/Zombie.java
 
     public double getHp() {
         return hp;
