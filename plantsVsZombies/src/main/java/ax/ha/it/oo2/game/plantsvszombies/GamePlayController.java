@@ -30,12 +30,12 @@ public class GamePlayController {
     public ImageView lawnImage;
     public Label sunCountLabel;
     public GridPane lawn_grid;
-    public Level level = null;
+    private Level level;
     public static List<Plant> allPlants;
-    public static List<Zombie> allZombies;
+    private static List<Zombie> allZombies;
     public static List<Zombie> spawnedZombies;
     public static List<Timeline> allAnimations;
-    public static List<SidebarCard> cards;
+    static List<SidebarCard> cards;
     public static int killedZombies;
     public Label levelNumber;
     public ImageView gameMenu;
@@ -46,7 +46,7 @@ public class GamePlayController {
     private Timeline zombiespawner;
     public static int sunCount = 25;
     public static boolean gameStatus = true;
-    public static boolean menuIsUp = false;
+    static boolean menuIsUp = false;
 
     @FXML
     public void getGridPosition(MouseEvent mouseEvent) {
