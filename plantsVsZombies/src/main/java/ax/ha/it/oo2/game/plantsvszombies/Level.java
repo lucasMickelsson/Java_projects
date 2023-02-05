@@ -32,30 +32,35 @@ public class Level {
             this.totalNormalZombies = 10;
             this.totalBucketZombies = 0;
             this.totalConeZombies = 5;
-            fillWithConeAndNormal();
+            fillNormal();
+            fillCone();
         } else if (levelNumber == 3) {
             this.totalZombies = 20;
             this.totalNormalZombies = 10;
-            this.totalBucketZombies = 5;
-            this.totalConeZombies = 5;
-            fillWithAllSort();
+            this.totalBucketZombies = 2;
+            this.totalConeZombies = 8;
+            fillWithAllTypes();
         } else if (levelNumber == 4) {
             this.totalZombies = 25;
-            this.totalNormalZombies = 3;
-            this.totalBucketZombies = 13;
+            this.totalNormalZombies = 12;
+            this.totalBucketZombies = 4;
             this.totalConeZombies = 9;
-            fillWithAllSort();
+            fillWithAllTypes();
         } else if (levelNumber == 5) {
             this.totalZombies = 30;
-            this.totalNormalZombies = 2;
-            this.totalBucketZombies = 20;
-            this.totalConeZombies = 8;
-            fillWithAllSort();
+            this.totalNormalZombies = 12;
+            this.totalBucketZombies = 8;
+            this.totalConeZombies = 10;
+            fillWithAllTypes();
         }
         Collections.shuffle(zombieList);
     }
-
-    private void fillWithConeAndNormal() {
+    private void fillWithAllTypes(){
+        fillNormal();
+        fillCone();
+        fillBucket();
+    }
+    private void fillCone() {
         Random random = new Random();
         ConeZombie zombie = null;
         for (int i = 0; i < totalConeZombies; i++) {
@@ -73,14 +78,12 @@ public class Level {
             }
             zombieList.add(zombie);
         }
-        fillNormal();
     }
 
     private void fillNormal() {
         Random random = new Random();
         NormalZombie zombie = null;
         for (int i = 0; i < totalNormalZombies; i++) {
-
             int lane = random.nextInt(1, 6);
             if (lane == 1) {
                 zombie = new NormalZombie(1024, 45);
@@ -96,11 +99,9 @@ public class Level {
             zombieList.add(zombie);
         }
     }
-
-    private void fillWithAllSort() {
+    private void fillBucket(){
         Random random = new Random();
         BucketZombie zombie = null;
-        fillWithConeAndNormal();
         for (int i = 0; i < totalBucketZombies; i++) {
             int lane = random.nextInt(1, 6);
             if (lane == 1) {
