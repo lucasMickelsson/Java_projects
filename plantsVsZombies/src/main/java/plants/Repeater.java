@@ -12,7 +12,7 @@ public class Repeater extends Plant {
     private Timeline timeline;
 
     public Repeater(int x, int y, int row, int col) {
-        super(x, y, 530, "/repeater.gif", row, col, 60, 60);
+        super(x, y, 430, "/repeater.gif", row, col, 60, 60);
     }
 
     public void attack(Pane pane) {
