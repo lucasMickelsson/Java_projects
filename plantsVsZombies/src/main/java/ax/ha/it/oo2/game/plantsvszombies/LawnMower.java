@@ -4,8 +4,12 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import zombies.Zombie;
+
+import java.nio.file.Paths;
 
 public class LawnMower extends GameElements {
     private Timeline zombieCheck;
@@ -42,6 +46,11 @@ public class LawnMower extends GameElements {
 
     public void activate() {
         imageView.setImage(new Image("lawnmowerActivated.gif", 70, 60, false, false));
+        Media sound = new Media(Paths.get("../plantsVsZombies\\src\\main\\resources\\PlantVsZombies_assets_sounds_lawnmower.wav").toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setVolume(1000);
+        mediaPlayer.play();
         Timeline driving = new Timeline(new KeyFrame(Duration.millis(5), e -> {
             if (getX() <= 1200) {
                 setX(getX() + 1);

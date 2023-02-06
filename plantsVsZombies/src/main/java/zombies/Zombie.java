@@ -55,7 +55,7 @@ public abstract class Zombie extends GameElements {
         }
     }
 
-    public void checkReachedHouse() {
+    private void checkReachedHouse() {
         // Check if the zombie has reached the house
         if (this.getX() <= 250) {
             GamePlayController.gameStatus = false;
@@ -80,7 +80,11 @@ public abstract class Zombie extends GameElements {
         return animation;
     }
 
-    public void eatPlant() {
+    private void eatPlant() {
+        Media sound = new Media(Paths.get("../plantsVsZombies\\src\\main\\resources\\PlantVsZombies_assets_sounds_chomp.wav").toUri().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setAutoPlay(true);
+
         int foundPlant = 0;
         for (int i = 0; i < GamePlayController.allPlants.size(); i++) {
             Plant plant = GamePlayController.allPlants.get(i);
@@ -92,6 +96,10 @@ public abstract class Zombie extends GameElements {
                     isEating = true;
                 }
                 this.speed = 0;
+                /*Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000), actionEvent -> eatPlantSound()));
+                timeline.setCycleCount(1000);
+                timeline.play();
+                GamePlayController.allAnimations.add(timeline);*/
                 // System.out.println("Plant hp: " + plant.getHp() + " Zombie hp: " + this.getHp());
                 plant.setHp(plant.getHp() - this.attackPower);
                 if (plant.getHp() <= 0) {
@@ -100,6 +108,7 @@ public abstract class Zombie extends GameElements {
                     plant.getImageView().setDisable(true);
                     plant.getImageView().setVisible(false);
                     this.speed = 1;
+                    // timeline.stop();
                     reachedPlant = false;
                 }
             }
