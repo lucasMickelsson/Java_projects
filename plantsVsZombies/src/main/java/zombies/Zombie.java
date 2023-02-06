@@ -2,11 +2,16 @@ package zombies;
 
 import ax.ha.it.oo2.game.plantsvszombies.GameElements;
 import ax.ha.it.oo2.game.plantsvszombies.GamePlayController;
+import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import plants.Plant;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
+
+import java.nio.file.Paths;
 
 public abstract class Zombie extends GameElements {
     protected double hp;
@@ -37,9 +42,17 @@ public abstract class Zombie extends GameElements {
 
             GamePlayController.killedZombies += 1;
             GamePlayController.spawnedZombies.remove(this);
+            Media sound = new Media(Paths.get("../plantsVsZombies\\src\\main\\resources\\PlantVsZombies_assets_sounds_yuck.wav").toUri().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.setAutoPlay(true);
+            mediaPlayer.play();
         }
         // check life if its time to make a normal zombie
-
+        if (this.hp <= 10 && getClass() != NormalZombie.class) {
+            this.imageView.setImage(new Image("/normalzombie.gif", 68, 118, false, false));
+            this.width = 68;
+            this.height = 118;
+        }
     }
 
     public void checkReachedHouse() {
