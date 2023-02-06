@@ -23,7 +23,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        addMusic();
+        addMusic(); //https://github.com/lwd-temp/jspvz/tree/master/images/Zombies
         VBox vBox = createStartScene();
         vBox.setBackground(setMenuBackground());
         Scene scene = new Scene(vBox, 1024, 600);

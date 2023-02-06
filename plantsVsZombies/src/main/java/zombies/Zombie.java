@@ -48,7 +48,7 @@ public abstract class Zombie extends GameElements {
             mediaPlayer.play();
         }
         // check life if its time to make a normal zombie
-        if (this.hp <= 10 && getClass() != NormalZombie.class) {
+        if (this.hp == 10 && getClass() != NormalZombie.class) {
             this.imageView.setImage(new Image("/normalzombie.gif", 68, 118, false, false));
             this.width = 68;
             this.height = 118;
@@ -81,10 +81,6 @@ public abstract class Zombie extends GameElements {
     }
 
     private void eatPlant() {
-        Media sound = new Media(Paths.get("../plantsVsZombies\\src\\main\\resources\\PlantVsZombies_assets_sounds_chomp.wav").toUri().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.setAutoPlay(true);
-
         int foundPlant = 0;
         for (int i = 0; i < GamePlayController.allPlants.size(); i++) {
             Plant plant = GamePlayController.allPlants.get(i);
