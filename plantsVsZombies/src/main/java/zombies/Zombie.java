@@ -20,12 +20,14 @@ public abstract class Zombie extends GameElements {
     protected Timeline animation;
     protected boolean isEating = false;
     protected boolean reachedPlant = false;
+    protected int id;
 
-    public Zombie(double attackPower, double speed, int x, int y, double hp, String path, int width, int height) {
+    public Zombie(int id, double attackPower, double speed, int x, int y, double hp, String path, int width, int height) {
         super(x, y, path, width, height);
         this.attackPower = attackPower;
         this.speed = speed;
         this.hp = hp;
+        this.id = id;
     }
 
     public double getHp() {
@@ -84,25 +86,25 @@ public abstract class Zombie extends GameElements {
         int foundPlant = 0;
         for (int i = 0; i < GamePlayController.allPlants.size(); i++) {
             Plant plant = GamePlayController.allPlants.get(i);
-            if ((plant.getY() == this.getY() + 55 && this.getX() - plant.getX() == -25 && plant.getHp() > 0) ||
+            if ((plant.getY() == this.getY() + 55 && this.getX() - plant.getX() == 0 && plant.getHp() > 0) ||
                     (this.getX() == plant.getX() && plant.getY() == this.getY() + 55 && plant.getHp() > 0)) {
                 foundPlant = 1;
                 if (!reachedPlant) {
                     reachedPlant = true;
                     isEating = true;
                 }
+                if (this.id == Zombies.values()[id - 1].getID() && speed > 0) {
+                    imageView.setImage(new Image(Zombies.values()[id - 1].getEat(), 122, 122, false, false));
+                }
                 this.speed = 0;
-                /*Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000), actionEvent -> eatPlantSound()));
-                timeline.setCycleCount(1000);
-                timeline.play();
-                GamePlayController.allAnimations.add(timeline);*/
-                // System.out.println("Plant hp: " + plant.getHp() + " Zombie hp: " + this.getHp());
+                System.out.println("Plant hp: " + plant.getX() + " Zombie hp: " + this.getX());
                 plant.setHp(plant.getHp() - this.attackPower);
                 if (plant.getHp() <= 0) {
                     plant.setHp(0);
                     GamePlayController.allPlants.remove(plant);
                     plant.getImageView().setDisable(true);
                     plant.getImageView().setVisible(false);
+                    imageView.setImage(new Image(Zombies.values()[id - 1].getNormal(), 122, 122, false, false));
                     this.speed = 1;
                     // timeline.stop();
                     reachedPlant = false;

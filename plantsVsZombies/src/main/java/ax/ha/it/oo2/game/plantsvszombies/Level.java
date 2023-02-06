@@ -12,7 +12,6 @@ public class Level {
     private int totalNormalZombies;
     private int totalBucketZombies;
     private int totalConeZombies;
-
     private int totalFootballZombies;
     private ArrayList<Zombie> zombieList;
 
@@ -21,12 +20,12 @@ public class Level {
         zombieList = new ArrayList<>();
 
         if (levelNumber == 1) {
-            this.totalZombies = 1;
-            this.totalNormalZombies = 0;
+            this.totalZombies = 10;
+            this.totalNormalZombies = 10;
             this.totalBucketZombies = 0;
             this.totalConeZombies = 0;
-            this.totalFootballZombies = 1;
-            fillFootball();
+            this.totalFootballZombies = 0;
+            fillNormal();
         } else if (levelNumber == 2) {
             this.totalZombies = 15;
             this.totalNormalZombies = 10;
