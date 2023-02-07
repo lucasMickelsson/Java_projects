@@ -33,7 +33,7 @@ public class Bullet extends GameElements {
     public void checkZombieCollision() {
         for (int i = 0; i < GamePlayController.spawnedZombies.size(); i++) {
             Zombie zombie = GamePlayController.spawnedZombies.get(i);
-            if (zombie.getY() + 55 == this.getY() && zombie.getX() - this.getX() <= -4 && zombie.getHp() > 0) {
+            if (zombie.getY() + 55 == this.getY() && zombie.getX() - this.getX() <= -30 && zombie.getHp() > 0) {
                 zombie.setHp(zombie.getHp() - 1);
                 this.imageView.setDisable(true);
                 this.imageView.setVisible(false);

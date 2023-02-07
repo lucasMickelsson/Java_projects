@@ -86,8 +86,8 @@ public abstract class Zombie extends GameElements {
         int foundPlant = 0;
         for (int i = 0; i < GamePlayController.allPlants.size(); i++) {
             Plant plant = GamePlayController.allPlants.get(i);
-            if ((plant.getY() == this.getY() + 55 && this.getX() - plant.getX() == 0 && plant.getHp() > 0) ||
-                    (this.getX() == plant.getX() && plant.getY() == this.getY() + 55 && plant.getHp() > 0)) {
+            if ((plant.getY() == this.getY() + 55 && this.getX() - plant.getX() == -30 && plant.getHp() > 0) ||
+                    (this.getX() == plant.getX() - 50 && plant.getY() == this.getY() + 55 && plant.getHp() > 0)) {
                 foundPlant = 1;
                 if (!reachedPlant) {
                     reachedPlant = true;
@@ -104,7 +104,9 @@ public abstract class Zombie extends GameElements {
                     GamePlayController.allPlants.remove(plant);
                     plant.getImageView().setDisable(true);
                     plant.getImageView().setVisible(false);
-                    imageView.setImage(new Image(Zombies.values()[id - 1].getNormal(), 122, 122, false, false));
+                    if (this.id == Zombies.values()[id - 1].getID() && speed == 0) {
+                        imageView.setImage(new Image(Zombies.values()[id - 1].getNormal(), 122, 122, false, false));
+                    }
                     this.speed = 1;
                     // timeline.stop();
                     reachedPlant = false;
@@ -112,6 +114,9 @@ public abstract class Zombie extends GameElements {
             }
         }
         if (foundPlant == 0) {
+            if (this.id == Zombies.values()[id - 1].getID() && speed == 0) {
+                imageView.setImage(new Image(Zombies.values()[id - 1].getNormal(), 122, 122, false, false));
+            }
             this.speed = 1;
             reachedPlant = false;
         }

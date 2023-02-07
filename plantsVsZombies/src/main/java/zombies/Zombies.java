@@ -1,7 +1,7 @@
 package zombies;
 
 public enum Zombies {
-    NORMALZOMBIE("/Zombie.gif", "ZombieAttack.gif", 1),
+    NORMALZOMBIE("/Zombie.gif", "/ZombieAttack.gif", 1),
     CONEZOMBIE("/coneheadzombie.gif", "/ConeheadZombieAttack.gif", 2),
     BUCKETZOMBIE("/bucketheadzombie.gif", "/BucketheadZombieAttack.gif", 3),
     FOOTBALLZOMBIE("/FootballZombie.gif", "/FootballZombieAttack.gif", 4);
