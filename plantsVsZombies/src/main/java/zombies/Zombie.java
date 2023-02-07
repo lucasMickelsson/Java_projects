@@ -12,6 +12,7 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 
 import java.nio.file.Paths;
+import java.util.List;
 
 public abstract class Zombie extends GameElements {
     protected double hp;
@@ -51,9 +52,14 @@ public abstract class Zombie extends GameElements {
         }
         // check life if its time to make a normal zombie
         if (this.hp == 10 && getClass() != NormalZombie.class) {
-            this.imageView.setImage(new Image(Zombies.NORMALZOMBIE.getNormal(), 68, 118, false, false));
-            this.width = 68;
-            this.height = 118;
+            for (int i = 0; i < GamePlayController.spawnedZombies.size(); i++) {
+                if (GamePlayController.spawnedZombies.get(i) == this) {
+                    GamePlayController.spawnedZombies.get(i).imageView.setVisible(false);
+                    GamePlayController.spawnedZombies.get(i).imageView.setDisable(true);
+                    GamePlayController.spawnedZombies.set(i, new NormalZombie(this.getX(), this.getY()));
+                    break;
+                }
+            }
         }
     }
 
@@ -94,7 +100,7 @@ public abstract class Zombie extends GameElements {
                     isEating = true;
                 }
                 if (this.id == Zombies.values()[id - 1].getID() && speed > 0) {
-                    imageView.setImage(new Image(Zombies.values()[id - 1].getEat(), 122, 122, false, false));
+                    imageView.setImage(new Image(Zombies.values()[id - 1].getEat(), width, height, false, false));
                 }
                 this.speed = 0;
                 System.out.println("Plant hp: " + plant.getHp() + " Zombie hp: " + this.getHp());
@@ -105,7 +111,7 @@ public abstract class Zombie extends GameElements {
                     plant.getImageView().setDisable(true);
                     plant.getImageView().setVisible(false);
                     if (this.id == Zombies.values()[id - 1].getID() && speed == 0) {
-                        imageView.setImage(new Image(Zombies.values()[id - 1].getNormal(), 122, 122, false, false));
+                        imageView.setImage(new Image(Zombies.values()[id - 1].getNormal(), width, height, false, false));
                     }
                     this.speed = 1;
                     // timeline.stop();
@@ -115,7 +121,7 @@ public abstract class Zombie extends GameElements {
         }
         if (foundPlant == 0) {
             if (this.id == Zombies.values()[id - 1].getID() && speed == 0) {
-                imageView.setImage(new Image(Zombies.values()[id - 1].getNormal(), 122, 122, false, false));
+                imageView.setImage(new Image(Zombies.values()[id - 1].getNormal(), width, height, false, false));
             }
             this.speed = 1;
             reachedPlant = false;
