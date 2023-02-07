@@ -19,7 +19,7 @@ public class Repeater extends Plant {
         timeline = new Timeline(new KeyFrame(Duration.seconds(2), actionEvent -> {
             for (int i = 0; i < GamePlayController.spawnedZombies.size(); i++) {
                 Zombie zombie = GamePlayController.spawnedZombies.get(i);
-                if (this.getY() == zombie.getY() + 55 && this.getX() <= zombie.getX() && zombie.getHp() > 0) {
+                if (this.getY() == zombie.getY() + 55 && this.getX() - 30 <= zombie.getX() && zombie.getHp() > 0) {
                     Bullet bullet1 = new Bullet(getXCoordinate(col) + 30, getYCoordinate(row));
                     Bullet bullet2 = new Bullet(getXCoordinate(col), getYCoordinate(row));
                     bullet1.makeImage(pane);

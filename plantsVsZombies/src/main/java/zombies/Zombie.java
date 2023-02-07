@@ -51,7 +51,7 @@ public abstract class Zombie extends GameElements {
         }
         // check life if its time to make a normal zombie
         if (this.hp == 10 && getClass() != NormalZombie.class) {
-            this.imageView.setImage(new Image("/normalzombie.gif", 68, 118, false, false));
+            this.imageView.setImage(new Image(Zombies.NORMALZOMBIE.getNormal(), 68, 118, false, false));
             this.width = 68;
             this.height = 118;
         }
@@ -97,7 +97,7 @@ public abstract class Zombie extends GameElements {
                     imageView.setImage(new Image(Zombies.values()[id - 1].getEat(), 122, 122, false, false));
                 }
                 this.speed = 0;
-                System.out.println("Plant hp: " + plant.getX() + " Zombie hp: " + this.getX());
+                System.out.println("Plant hp: " + plant.getHp() + " Zombie hp: " + this.getHp());
                 plant.setHp(plant.getHp() - this.attackPower);
                 if (plant.getHp() <= 0) {
                     plant.setHp(0);
