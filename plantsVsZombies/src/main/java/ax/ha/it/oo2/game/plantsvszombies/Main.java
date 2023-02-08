@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 public class Main extends Application {
-    static Stage stageTemp;
+    public static Stage stageTemp;
     static MediaPlayer mediaPlayer;
 
     @Override

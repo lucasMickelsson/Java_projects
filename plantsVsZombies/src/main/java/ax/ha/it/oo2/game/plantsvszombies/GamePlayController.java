@@ -216,7 +216,7 @@ public class GamePlayController {
         try {
             main.startGame();
             sunCount = 25;
-            killedZombies=0;
+            killedZombies = 0;
             menuIsUp = false;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -230,7 +230,7 @@ public class GamePlayController {
             main.start(Main.stageTemp);
             sunCount = 25;
             menuIsUp = false;
-            killedZombies=0;
+            killedZombies = 0;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

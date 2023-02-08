@@ -2,7 +2,9 @@ package zombies;
 
 import ax.ha.it.oo2.game.plantsvszombies.GameElements;
 import ax.ha.it.oo2.game.plantsvszombies.GamePlayController;
+import ax.ha.it.oo2.game.plantsvszombies.Main;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import plants.Plant;
@@ -12,7 +14,6 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 
 import java.nio.file.Paths;
-import java.util.List;
 
 public abstract class Zombie extends GameElements {
     protected double hp;
@@ -39,24 +40,33 @@ public abstract class Zombie extends GameElements {
         this.hp = hp;
         if (this.hp <= 0) {
             //stop all animations
+            System.out.print("Killed zombie  ");
             imageView.setVisible(false);
             imageView.setDisable(true);
             animation.stop();
 
             GamePlayController.killedZombies += 1;
             GamePlayController.spawnedZombies.remove(this);
+            System.out.println(GamePlayController.spawnedZombies.size());
             Media sound = new Media(Paths.get("../plantsVsZombies\\src\\main\\resources\\PlantVsZombies_assets_sounds_yuck.wav").toUri().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
             mediaPlayer.setAutoPlay(true);
             mediaPlayer.play();
-        }
-        // check life if its time to make a normal zombie
-        if (this.hp == 10 && getClass() != NormalZombie.class) {
+        } else if (this.hp == 10 && getClass() != NormalZombie.class) { // check life if its time to make a normal zombie
             for (int i = 0; i < GamePlayController.spawnedZombies.size(); i++) {
-                if (GamePlayController.spawnedZombies.get(i) == this) {
-                    GamePlayController.spawnedZombies.get(i).imageView.setVisible(false);
-                    GamePlayController.spawnedZombies.get(i).imageView.setDisable(true);
-                    GamePlayController.spawnedZombies.set(i, new NormalZombie(this.getX(), this.getY()));
+                Zombie zombieIndex = GamePlayController.spawnedZombies.get(i);
+                if (zombieIndex == this) {
+                    GamePlayController.spawnedZombies.remove(zombieIndex);
+                    zombieIndex.imageView.setDisable(true);
+                    zombieIndex.imageView.setVisible(false);
+                    zombieIndex.animation.stop();
+
+                    Zombie zombie = new NormalZombie(this.getX(), this.getY());
+                    GamePlayController.spawnedZombies.add(zombie);
+                    int index = GamePlayController.spawnedZombies.indexOf(zombie);
+                    AnchorPane anchorPane = (AnchorPane) Main.stageTemp.getScene().getRoot();
+                    GamePlayController.spawnedZombies.get(index).makeImage(anchorPane);
+                    GamePlayController.spawnedZombies.get(index).moveZombie();
                     break;
                 }
             }
