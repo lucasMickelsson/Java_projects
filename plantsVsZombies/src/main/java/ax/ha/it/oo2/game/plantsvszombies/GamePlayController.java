@@ -26,23 +26,33 @@ import java.util.List;
 import java.util.Random;
 
 public class GamePlayController {
-    public AnchorPane GamePlayRoot;
-    public ImageView lawnImage;
-    public Label sunCountLabel;
-    public GridPane lawn_grid;
+    @FXML
+    private AnchorPane GamePlayRoot;
+    @FXML
+    ImageView lawnImage;
+    @FXML
+    private Label sunCountLabel;
+    @FXML
+    private GridPane lawn_grid;
     private Level level;
     public static List<Plant> allPlants;
     private static List<Zombie> allZombies;
     public static List<Zombie> spawnedZombies;
     public static List<Timeline> allAnimations;
-    static List<SidebarCard> cards;
+    private static List<SidebarCard> cards;
     public static int killedZombies;
-    public Label levelNumber;
-    public ImageView gameMenu;
-    public ImageView GameMenuLoader;
-    public Button startButton;
-    public AnchorPane pauseMenu;
-    public Label zombieCounter;
+    @FXML
+    private Label levelNumber;
+    @FXML
+    ImageView gameMenu;
+    @FXML
+    ImageView GameMenuLoader;
+    @FXML
+    private Button startButton;
+    @FXML
+    private AnchorPane pauseMenu;
+    @FXML
+    private Label zombieCounter;
     private Timeline zombiespawner;
     public static int sunCount = 25;
     public static boolean gameStatus = true;
@@ -64,6 +74,10 @@ public class GamePlayController {
                 SidebarCard.setIsSelected(false);
             }
         }
+    }
+
+    public static List<SidebarCard> getCards() {
+        return cards;
     }
 
     private boolean checkOccupiedPosition(int row, int col) {

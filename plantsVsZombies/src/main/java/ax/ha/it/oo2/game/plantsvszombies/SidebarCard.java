@@ -86,7 +86,7 @@ public class SidebarCard extends GameElements {
                     isSelected = true;
                 }
             });
-            GamePlayController.cards.add(card);
+            GamePlayController.getCards().add(card);
             y += 100;
         }
     }
